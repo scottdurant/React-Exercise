@@ -32,7 +32,7 @@ class SearchBar extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.fetchData();
-        // this.setState({searchValue: ""})
+        this.setState({searchTerm: ""})
     }
 
 
@@ -40,11 +40,9 @@ class SearchBar extends Component {
         return (
             <div>
                 <p>
-                    Search Here
+                    Search Hacker News
                 </p>
-                <form
-                    onSubmit={this.handleSubmit}
-                >
+                <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         value={this.state.searchTerm}

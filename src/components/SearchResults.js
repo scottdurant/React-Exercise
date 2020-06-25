@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Article from "./Article";
 import { searchResults } from '../actions';
 
 class SearchResults extends Component {
@@ -13,11 +14,9 @@ class SearchResults extends Component {
                 <p>
                     Search Results
                 </p>
-                <ul>
-                    {this.props.results.map((result, key) => 
-                        <li key={key}>{result.title}</li>
-                    )}
-                </ul>
+                <div>
+                    {this.props.results.map(a => <Article key={a.created_at} title={a.title} url={a.url}/>)}
+                </div>
             </div>
 
         )
