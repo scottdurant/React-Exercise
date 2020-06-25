@@ -6,13 +6,14 @@ import { searchResults } from '../actions/index';
 class SearchBar extends Component {
     fetchData = () => {
         return fetch('http://hn.algolia.com/api/v1/search?query=amazon&tags=story')
-            .then(response => response.json())
-            .then(response => console.log(response.hits))
-            // .then(response => {
-            //     response.then((data) => {
-            //         this.props.searchResults(data.items);
-            //     })
-            // }).catch((error) => console.log(error));
+            //.then(response => response.json())
+            //.then(response => console.log(response.hits))
+            .then((response) => {
+                response.json().then((data) => {
+                    //console.log(data)
+                    this.props.searchResults(data.hits);
+                })
+            }).catch((error) => console.log(error));
     }
 
 
