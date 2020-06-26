@@ -14,9 +14,9 @@ export const fetchArticlesBegin = () => ({
     type: FETCH_ARTICLES_BEGIN
 });
 
-export const fetchArticlesSuccess = articles => ({
+export const fetchArticlesSuccess = (articles, searchHistory) => ({
     type: FETCH_ARTICLES_SUCCESS,
-    payload: { articles }
+    payload: { articles, searchHistory }
 });
 
 export const fetchArticlesFailure = error => ({
@@ -30,7 +30,7 @@ export function fetchArticles(searchTerm) {
         return fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}&tags=story`)
             .then(res => res.json())
             .then(json => {
-                dispatch(fetchArticlesSuccess(json.hits));
+                dispatch(fetchArticlesSuccess(json.hits, searchTerm));
                 return json.hits;
             })
             .catch(error => dispatch(fetchArticlesFailure(error)));

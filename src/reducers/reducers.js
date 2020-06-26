@@ -24,7 +24,8 @@ function search(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                results: action.payload.articles
+                results: action.payload.articles,
+                searchHistory: state.searchHistory.concat(action.payload.searchHistory)
             };
         case FETCH_ARTICLES_FAILURE:
             return {
@@ -38,23 +39,7 @@ function search(state = initialState, action) {
     }
 }
 
-
-
-
-// const results = (state = [], action) => {
-//     switch(action.type) {
-//         case SEARCH_RESULTS:
-//             return {
-//                 ...state,
-//                 results: action.results
-//             }
-//         default:
-//             return state;
-//     }
-// }
-
 const rootReducer = combineReducers({
-    //results,
     search
 });
 
