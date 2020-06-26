@@ -8,6 +8,7 @@ import {
 
 const initialState = {
     searchHistory: [],
+    results: [],
     loading: false,
     error: null
 }
@@ -25,14 +26,14 @@ function search(state = initialState, action) {
             return {
                 ...state,
                 loading: false,
-                articles: action.payload.articles
+                results: action.payload.articles
             };
         case FETCH_ARTICLES_FAILURE:
             return {
                 ...state,
                 loading: false,
                 error: action.payload.error,
-                articles: []
+                results: []
             };
         default:
             return state;
@@ -42,20 +43,20 @@ function search(state = initialState, action) {
 
 
 
-const results = (state = [], action) => {
-    switch(action.type) {
-        case SEARCH_RESULTS:
-            return {
-                ...state,
-                results: action.results
-            }
-        default:
-            return state;
-    }
-}
+// const results = (state = [], action) => {
+//     switch(action.type) {
+//         case SEARCH_RESULTS:
+//             return {
+//                 ...state,
+//                 results: action.results
+//             }
+//         default:
+//             return state;
+//     }
+// }
 
 const rootReducer = combineReducers({
-    results,
+    //results,
     search
 });
 

@@ -11,7 +11,7 @@ class ArticleList extends React.Component {
 
 
     render() {
-        const { error, loading, articles } = this.props;
+        const { error, loading } = this.props;
 
         // if error
 
@@ -26,16 +26,17 @@ class ArticleList extends React.Component {
         return (
             <ul>
                 <p>Articles</p>
-                {/* {articles.map(article => 
+                
+                {this.props.articles.map(article => 
                     <li key={article.created_at}>{article.title}</li>
-                )} */}
+                )}
             </ul>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    articles: state.results,
+    articles: state.search.results,
     loading: state.search.loading,
     error: state.search.error
 })
