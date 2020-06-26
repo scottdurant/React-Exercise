@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchArticles, fetchArticlesSuccess, searchResults } from '../actions/actions';
+import { fetchArticles } from '../actions/actions';
 
 class ArticleSearch extends Component {
     constructor(props) {
@@ -20,11 +20,10 @@ class ArticleSearch extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onFetchArticles();
+        this.props.onFetchArticles(this.state.searchTerm);
         this.setState({searchTerm: ""})
     }
-
-
+    
     render() {
         return (
             <div>
@@ -46,10 +45,10 @@ class ArticleSearch extends Component {
 
 const mapDispatchToProps = (dispatch => {
     return {
-        onFetchArticles: () => dispatch(fetchArticles())
+        onFetchArticles: (searchTerm) => dispatch(fetchArticles(searchTerm))
     }
 })
 
-export default connect(null, mapDispatchToProps )(ArticleSearch);
+export default connect(null, mapDispatchToProps)(ArticleSearch);
 
 //export default connect(null, mapDispatchToProps, { fetchArticleSuccess } )(ArticleSearch);
