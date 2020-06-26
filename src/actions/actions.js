@@ -24,13 +24,12 @@ export const fetchArticlesFailure = error => ({
     payload: { error }
 });
 
-export function fetchArticles() {
+export function fetchArticles(searchTerm) {
     return (dispatch) => {
         dispatch(fetchArticlesBegin());
-        return fetch(`http://hn.algolia.com/api/v1/search?query=Google&tags=story`)
+        return fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}&tags=story`)
             .then(res => res.json())
             .then(json => {
-                console.log(json.hits)
                 dispatch(fetchArticlesSuccess(json.hits));
                 return json.hits;
             })
