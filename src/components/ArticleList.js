@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchArticles } from "../actions/actions";
+import Article from "./Article";
 
 class ArticleList extends React.Component {
     componentDidMount() {
@@ -28,7 +29,7 @@ class ArticleList extends React.Component {
                 <p>Articles</p>
                 
                 {this.props.articles.map(article => 
-                    <li key={article.created_at}>{article.title}</li>
+                    <Article key={article.created_at} title={article.title} url={article.url}/>
                 )}
             </ul>
         )
