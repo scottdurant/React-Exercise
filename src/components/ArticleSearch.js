@@ -50,5 +50,3 @@ const mapDispatchToProps = (dispatch => {
 })
 
 export default connect(null, mapDispatchToProps)(ArticleSearch);
-
-//export default connect(null, mapDispatchToProps, { fetchArticleSuccess } )(ArticleSearch);

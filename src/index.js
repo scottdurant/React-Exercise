@@ -10,6 +10,16 @@ import rootReducer from './reducers/reducers';
 import thunk from 'redux-thunk';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+
+
+
+
+
+
+
+
+
+///////////////    just for debugging purposes, delete later  ////////////////
 store.subscribe(() => console.log('store', store.getState()));
 
 ReactDOM.render(
