@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Article from "./Article";
-import { searchResults } from '../actions';
+import { searchResults } from '../actions/actions';
 
 class SearchResults extends Component {
     constructor(props) {

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { SEARCH_RESULTS } from '../actions/index';
+import { SEARCH_RESULTS } from '../actions/actions';
 import {
     FETCH_ARTICLES_BEGIN,
     FETCH_ARTICLES_SUCCESS,
     FETCH_ARTICLES_FAILURE
-} from '../actions/index';
+} from '../actions/actions';
 
 const initialState = {
     searchHistory: [],
@@ -21,6 +21,7 @@ function search(state = initialState, action) {
                 error: null
             };
         case FETCH_ARTICLES_SUCCESS:
+            console.log('article successs!')
             return {
                 ...state,
                 loading: false,
@@ -44,7 +45,10 @@ function search(state = initialState, action) {
 const results = (state = [], action) => {
     switch(action.type) {
         case SEARCH_RESULTS:
-            return action.results;
+            return {
+                ...state,
+                results: action.results
+            }
         default:
             return state;
     }

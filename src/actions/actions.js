@@ -25,13 +25,14 @@ export const fetchArticlesFailure = error => ({
 });
 
 export function fetchArticles() {
-    return dispatch => {
+    return (dispatch) => {
         dispatch(fetchArticlesBegin());
         return fetch(`http://hn.algolia.com/api/v1/search?query=Amazon&tags=story`)
             .then(res => res.json())
             .then(json => {
-                dispatch(fetchArticlesSuccess(json.articles));
-                return json.articles;
+                console.log(json.hits)
+                dispatch(fetchArticlesSuccess(json.hits));
+                return json.hits;
             })
             .catch(error => dispatch(fetchArticlesFailure(error)));
     };

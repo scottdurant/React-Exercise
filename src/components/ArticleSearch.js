@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchResults } from '../actions/actions';
+import { fetchArticles, fetchArticlesSuccess, searchResults } from '../actions/actions';
 
-
-class SearchBar extends Component {
+class ArticleSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,23 +14,13 @@ class SearchBar extends Component {
 
     }
 
-    fetchData = () => {
-        return fetch(`http://hn.algolia.com/api/v1/search?query=${this.state.searchTerm}&tags=story`)
-            .then((response) => {
-                response.json().then((data) => {
-                    //console.log(data)
-                    this.props.searchResults(data.hits);
-                })
-            }).catch((error) => console.log(error));
-    }
-
     handleChange(event) {
         this.setState({ searchTerm: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.fetchData();
+        this.props.onFetchArticles();
         this.setState({searchTerm: ""})
     }
 
@@ -55,4 +44,12 @@ class SearchBar extends Component {
     }
 }
 
-export default connect(null, { searchResults })(SearchBar);
+const mapDispatchToProps = (dispatch => {
+    return {
+        onFetchArticles: () => dispatch(fetchArticles())
+    }
+})
+
+export default connect(null, mapDispatchToProps )(ArticleSearch);
+
+//export default connect(null, mapDispatchToProps, { fetchArticleSuccess } )(ArticleSearch);

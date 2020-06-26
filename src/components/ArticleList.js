@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchArticles } from "../actions/index";
+import { fetchArticles } from "../actions/actions";
 
 class ArticleList extends React.Component {
     componentDidMount() {
@@ -19,8 +19,13 @@ class ArticleList extends React.Component {
             return <div>Loading....</div>
         }
 
+        if (error) {
+            return <div>error: {this.props.error}</div>
+        }
+
         return (
             <ul>
+                <p>Articles</p>
                 {/* {articles.map(article => 
                     <li key={article.created_at}>{article.title}</li>
                 )} */}
