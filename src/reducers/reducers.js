@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { SEARCH_RESULTS } from '../actions/actions';
 import {
     FETCH_ARTICLES_BEGIN,
     FETCH_ARTICLES_SUCCESS,
@@ -22,7 +21,6 @@ function search(state = initialState, action) {
                 error: null
             };
         case FETCH_ARTICLES_SUCCESS:
-            console.log('article successs!')
             return {
                 ...state,
                 loading: false,
