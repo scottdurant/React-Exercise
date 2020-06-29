@@ -3,7 +3,7 @@ import React from 'react';
 function Article(props) {
     return (
         <div>
-            <span><a href={props.url}> {props.title} </a></span>
+            <span onClick={() => window.open(props.url, "_blank")}>{props.title}</span>
         </div>
     )
 }

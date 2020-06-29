@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import {
     FETCH_ARTICLES_BEGIN,
     FETCH_ARTICLES_SUCCESS,
@@ -39,8 +38,4 @@ function search(state = initialState, action) {
     }
 }
 
-const rootReducer = combineReducers({
-    search
-});
-
-export default rootReducer;
+export default search;

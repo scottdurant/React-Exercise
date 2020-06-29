@@ -1,25 +1,16 @@
 import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import search from './reducers/reducers';
 
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './reducers/reducers';
-import thunk from 'redux-thunk';
+const store = createStore(search, applyMiddleware(thunk));
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
-
-
-
-
-
-
-
-
-
-///////////////    just for debugging purposes, delete later  ////////////////
+// logs the redux state in the console
 store.subscribe(() => console.log('store', store.getState()));
 
 ReactDOM.render(
