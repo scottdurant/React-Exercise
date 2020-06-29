@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-// import SearchBar from './components/SearchBar';
-// import SearchResults from './components/SearchResults';
 import ArticleList from './components/ArticleList';
 import ArticleSearch from './components/ArticleSearch';
+import HistoryItemList from './components/HistoryItemList';
 
 class App extends Component {
   render() {
@@ -11,7 +10,7 @@ class App extends Component {
       <div className="App">
         <ArticleSearch />
         <ArticleList />
-        {/* <SearchResults /> */}
+        <HistoryItemList />
       </div>
     );
   }
