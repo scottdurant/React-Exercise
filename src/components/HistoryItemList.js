@@ -19,7 +19,7 @@ class HistoryItemList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    historyItems: state.search.searchHistory,
+    historyItems: state.searchHistory,
 })
 
 export default connect(mapStateToProps)(HistoryItemList);

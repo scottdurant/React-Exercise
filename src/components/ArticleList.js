@@ -16,9 +16,8 @@ class ArticleList extends React.Component {
 
         return (
             <ul>
-                
-                {this.props.articles.map(article => 
-                    <Article key={article.created_at} title={article.title} url={article.url}/>
+                {this.props.articles.map(article =>
+                    <Article key={article.objectID} title={article.title} url={article.url}/>
                 )}
             </ul>
         )
@@ -26,9 +25,9 @@ class ArticleList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    articles: state.search.results,
-    loading: state.search.loading,
-    error: state.search.error
+    articles: state.results.filter(a => a.url !== null), // filter out articles with null url
+    loading: state.loading,
+    error: state.error
 })
 
 export default connect(mapStateToProps)(ArticleList);

@@ -1,14 +1,6 @@
-export const SEARCH_RESULTS = 'SEARCH_RESULTS';
 export const FETCH_ARTICLES_BEGIN = 'FETCH_ARTICLES_BEGIN';
 export const FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS';
 export const FETCH_ARTICLES_FAILURE = 'FETCH_ARTICLES_FAILURE';
-
-export function searchResults(results) {
-    return {
-        type: SEARCH_RESULTS,
-        results
-    }
-}
 
 export const fetchArticlesBegin = () => ({
     type: FETCH_ARTICLES_BEGIN
