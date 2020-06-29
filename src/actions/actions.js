@@ -27,7 +27,7 @@ export const fetchArticlesFailure = error => ({
 export function fetchArticles(searchTerm) {
     return (dispatch) => {
         dispatch(fetchArticlesBegin());
-        return fetch(`http://hn.algolia.com/api/v1/search?query=${searchTerm}&tags=story`)
+        return fetch(`http://hn.algolia.com/api/v1/search_by_date?query=${searchTerm}&tags=story`)
             .then(res => res.json())
             .then(json => {
                 dispatch(fetchArticlesSuccess(json.hits, searchTerm));
